@@ -13,14 +13,17 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import confusion_matrix, classification_report
 from load_dataset import load_dataset
 
+i = 0
+scores = 0
+
 # Load the dataset
 dataset = load_dataset()
 X = dataset.x
 y = dataset.y
 
 # Split the train and test set using KFolds cross validation method
+t = time()
 kf = KFold(n_splits=4, shuffle=True, random_state=42)
-i = 0
 for train_index, test_index in kf.split(X):
     i += 1
     print('KFold Iteration: {}'.format(i))
@@ -52,11 +55,13 @@ for train_index, test_index in kf.split(X):
     # Evaluate the classifier
     y_pred = clf.predict(X_test_pca)
     print(classification_report(y_test, y_pred))
-    print(confusion_matrix(y_test, y_pred))
+    # print(confusion_matrix(y_test, y_pred))
+    scores += clf.score(X_test_pca, y_test)
 
 # dump the classifier to `classifier.pickle`
 print('Dumping the classifier')
 with open('classifier.pickle', 'wb') as clfFile:
     pickle.dump(clf, clfFile)
 
-print('Done!')
+print('Total Average Score: {}'.format(scores / 4))
+print('Done! Total Time Taken: {}'.format(time() - t))

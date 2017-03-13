@@ -16,7 +16,9 @@ def load_dataset():
         dump_dataset() # Creates the pickle file
         pickleFile = open('dataset.pickle', 'rb') # open the pickled file
     finally:
-        return pickle.load(pickleFile) # return the deserialized object
+        dataset = pickle.load(pickleFile) # get the deserialized object
+        pickleFile.close() # close the file
+        return dataset # return the object
 
 
 if __name__ == '__main__': load_dataset()

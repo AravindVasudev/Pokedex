@@ -4,11 +4,6 @@ A Pokémon Image Classifier using EigenFaces(PCA) algorithm. In this, a dataset 
 grayscaled and a classifier is trained to this dataset using the dataset's Principle
 Components. The train set and the test set split is done using KFolds method(4 splits) and the classifier is evaluated using various metrics.
 
-### Execution
-![](1.png)
-![](2.png)
-![](3.png)
-
 ### Scripts Description
 
 |        Name         | Description |
@@ -17,9 +12,6 @@ Components. The train set and the test set split is done using KFolds method(4 s
 | `create_dataset_object.py` | This script reads all the images in `../dataset` and converts them into 40000D numpy array, label those datapoints, adds them to the datset and dumps the dataset object using Pickle. |
 | `load_dataset.py` | This script checks if the dataset exist, if yes, returns the loaded dataset else creates the `dataset.pickle`, loads it and returns it. |
 | `create_classifier.py` | This script creates the classifier, trains it, and dumps it to `classifier.pickle` file. |
-
-### Averaged Accuracy from KFold
-  Averaged Average Score: 0.24666666666666665
 
 ### TODOs
   - [ ] Obtain a cleaner dataset

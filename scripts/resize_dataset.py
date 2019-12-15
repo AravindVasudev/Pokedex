@@ -12,7 +12,7 @@ from PIL import Image, ImageOps
 for root, dirs, files in os.walk('../dataset/'):
     for f in files:
         imgF = Image.open(os.path.join(root, f)).convert('RGB') # Open the file in RGB mode
-        imgF = ImageOps.fit(image=imgF, size=(200, 200), method=Image.ANTIALIAS) # Crop the image
+        imgF = ImageOps.fit(image=imgF, size=(32, 32), method=Image.ANTIALIAS) # Crop the image
         imgF = ImageOps.grayscale(imgF) # apply grayscale
         imgF.save(os.path.join(root, f)) # save the image
         print(os.path.join(root, f), '- Done!') # logs for each image

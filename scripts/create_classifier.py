@@ -33,7 +33,7 @@ for train_index, test_index in kf.split(X):
     # Apply PCA and extract 80% of components
     print('  Computing PCA...')
     t0 = time()
-    pca = PCA(n_components=.6, whiten=True).fit(X_train)
+    pca = PCA(n_components=100, whiten=True).fit(X_train)
     X_train_pca = pca.transform(X_train)
     X_test_pca  = pca.transform(X_test)
     print('  PCA Computed: {}'.format(time() - t0))
